@@ -1,6 +1,17 @@
 /* Rosso Corsa — стиль «моторспорт-брутализм» (скилл premium-auto-site, как Top Wheels).
    Layout: «моторспорт-брутализм» — крупный широкий гротеск на всю ширину, бенто-сетка из плиток с острыми углами
    и тонкими линиями, моноширинные подписи как в техпаспорте. Тёмная гамма выбрана сознательно и не зависит от темы системы. */
+/* Шрифты со своего домена: только латиница, кириллица и нужные знаки (см. tools/build.py → README) */
+@font-face { font-family: 'Unbounded'; font-style: normal; font-weight: 300 800; font-display: swap; src: url('../fonts/unb-lat.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2026, U+2190-2193, U+2197, U+2212; }
+@font-face { font-family: 'Unbounded'; font-style: normal; font-weight: 300 800; font-display: swap; src: url('../fonts/unb-cyr.woff2') format('woff2'); unicode-range: U+0401, U+0410-044F, U+0451, U+2116; }
+@font-face { font-family: 'Unbounded'; font-style: normal; font-weight: 300 800; font-display: swap; src: url('../fonts/unb-ext.woff2') format('woff2'); unicode-range: U+0160-0161, U+017D-017E; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('../fonts/onest-lat.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2026, U+2190-2193, U+2197, U+2212; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('../fonts/onest-cyr.woff2') format('woff2'); unicode-range: U+0401, U+0410-044F, U+0451, U+2116; }
+@font-face { font-family: 'Onest'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('../fonts/onest-ext.woff2') format('woff2'); unicode-range: U+0160-0161, U+017D-017E; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../fonts/jb-lat.woff2') format('woff2'); unicode-range: U+0020-007E, U+00A0-00FF, U+2013-2014, U+2018-201D, U+2026, U+2190-2193, U+2197, U+2212; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../fonts/jb-cyr.woff2') format('woff2'); unicode-range: U+0401, U+0410-044F, U+0451, U+2116; }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../fonts/jb-ext.woff2') format('woff2'); unicode-range: U+0160-0161, U+017D-017E; }
+
 :root {
   --bg: #0a0a0a;          /* карбон */
   --panel: #111111;       /* фон чередующихся секций */
@@ -753,3 +764,7 @@ html.gallery-open { overflow: hidden; }
 .status i { background: var(--accent); }
 .wc__tiers .wc__tier { justify-content: center; }
 .cinfo dd .muted a { color: inherit; }
+.calc__foot button.calc__link { min-height: 0; padding: 0; border: 0; background: none; color: var(--fg); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.calc__foot button.calc__link:hover { background: none; color: var(--accent); }
+.strip figure .zoom { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.strip figure .zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }

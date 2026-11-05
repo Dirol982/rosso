@@ -16,9 +16,8 @@
 <meta property="og:image" content="https://dirol982.github.io/rosso/assets/img/hero.webp">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="../assets/fonts/unb-lat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/onest-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="alternate" hreflang="ru" href="https://dirol982.github.io/rosso/">
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/motion.css">
@@ -28,7 +27,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" data-header>
   <div class="top__in">
-    <a class="brand" href="./" aria-label="Rosso Corsa — home"><img class="logo-on-dark" src="../assets/img/logo-light.webp" alt="Rosso Corsa" width="225" height="90"><img class="logo-on-light" src="../assets/img/logo-dark.webp" alt="" width="225" height="90"></a>
+    <a class="brand" href="./" aria-label="Rosso Corsa — home"><img class="logo-on-dark" src="../assets/img/logo-light.webp" alt="Rosso Corsa" width="240" height="96"><img class="logo-on-light" src="../assets/img/logo-dark.webp" alt="" width="240" height="96" loading="lazy"></a>
     <nav class="nav" aria-label="Sections">
       <a href="#calc">Price</a>
       <a href="#services">Services</a>
@@ -39,7 +38,7 @@
     </nav>
     <span class="status"><i></i><span>Minsk · since 2005</span></span>
     <div class="tools">
-      <a class="tool tool--lang" href="../" hreflang="ru" lang="ru" aria-label="Русская версия">RU</a>
+      <a class="tool tool--lang" href="../" hreflang="ru" lang="ru" aria-label="RU — русская версия">RU</a>
       <button class="tool tool--theme" type="button" data-theme-toggle aria-label="Light theme"><svg class="i-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="i-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button>
     </div>
     <a class="btn btn--sm" href="#book">Book</a>
@@ -58,7 +57,7 @@
 
     <div class="bento bento--hero">
       <figure class="tile tile--photo tile--hero">
-        <img src="../assets/img/hero.webp" srcset="../assets/img/hero-720.webp 720w, ../assets/img/hero.webp 1600w" sizes="(max-width: 1000px) 100vw, 50vw" alt="A Rosso Corsa technician running computer diagnostics inside a car" width="1600" height="1066" fetchpriority="high">
+        <img src="../assets/img/hero.webp" srcset="../assets/img/hero-720.webp 720w, ../assets/img/hero-1080.webp 1080w, ../assets/img/hero.webp 1600w" sizes="(max-width: 1000px) 100vw, 50vw" alt="A Rosso Corsa technician running computer diagnostics inside a car" width="1600" height="1066" fetchpriority="high">
         <figcaption class="mono">European, American, Korean, Chinese and Japanese makes. From an oil change to an engine rebuild.</figcaption>
       </figure>
 

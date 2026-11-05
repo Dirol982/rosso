@@ -594,7 +594,7 @@ document.querySelectorAll("[data-quotes]").forEach((root) => {
         ? `<button type="button" data-more>${T('Ещё')} ${rest} ${label} ↓</button>`
         : expanded && list.length > LIMIT
           ? `<button type="button" data-more>${T('Свернуть')} ↑</button>`
-          : '<span></span>') + `<span>${T('Не видите нужную работу?')} <a data-to-search>${T('Найдите поиском')}</a> ${T('или спросите мастера')}</span>`;
+          : '<span></span>') + `<span>${T('Не видите нужную работу?')} <button type="button" class="calc__link" data-to-search>${T('Найдите поиском')}</button> ${T('или спросите мастера')}</span>`;
   };
 
   /* ── receipt ── */
@@ -1210,19 +1210,16 @@ document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = Strin
   strips.forEach((track) => {
     const imgs = [...track.querySelectorAll("img")];
     imgs.forEach((im, n) => {
-      const hit = im.closest("figure") || im.parentElement;
-      hit.classList.add("is-zoomable");
-      hit.setAttribute("role", "button");
-      hit.setAttribute("tabindex", "0");
+      // a real <button> over each photo: keyboard and screen readers get a proper control
+      const fig = im.closest("figure") || im.parentElement;
+      fig.classList.add("is-zoomable");
+      const hit = document.createElement("button");
+      hit.type = "button";
+      hit.className = "zoom";
       hit.setAttribute("aria-label", `${T("Открыть фото на весь экран")}: ${(im.alt || T("фото")).replace(/ — Rosso Corsa$/, "")}`);
+      fig.append(hit);
       // a drag on the strip is not a tap: the strip's own handler swallows that click
       hit.addEventListener("click", () => open(track, n));
-      hit.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          open(track, n);
-        }
-      });
     });
   });
 

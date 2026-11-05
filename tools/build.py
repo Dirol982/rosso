@@ -206,7 +206,7 @@ T = {
         map_q='Минск, улица Лещинского, 10',
         brands_l='Марки', foot='© ООО «Россо Корса», УНП 191257538. Марки автомобилей принадлежат их владельцам.',
         quick='Быстрая связь', dock_sum='Ваш расчёт', dock_empty='пока пусто', dock_call='Позвонить', dock_btn='Предчек',
-        lang_href='en/', lang_txt='EN', lang_label='English version', lang_attr='en',
+        lang_href='en/', lang_txt='EN', lang_label='EN — English version', lang_attr='en',
         # прайс
         p_title='Прайс Rosso Corsa — стоимость работ СТО в Минске',
         p_desc='Стоимость работ автосервиса Rosso Corsa в Минске: ТО, двигатель, подвеска, тормоза, выхлоп, автоэлектрика, шиномонтаж. Цены от, BYN.',
@@ -283,7 +283,7 @@ T = {
         map_q='Минск, улица Лещинского, 10',
         brands_l='Makes', foot='© Rosso Korsa LLC, UNP 191257538. Car brands belong to their owners.',
         quick='Quick contact', dock_sum='Your estimate', dock_empty='empty for now', dock_call='Call', dock_btn='Estimate',
-        lang_href='../', lang_txt='RU', lang_label='Русская версия', lang_attr='ru',
+        lang_href='../', lang_txt='RU', lang_label='RU — русская версия', lang_attr='ru',
         p_title='Rosso Corsa price list — car service prices in Minsk',
         p_desc='Rosso Corsa car service prices in Minsk: maintenance, engine, suspension, brakes, exhaust, auto electrics, tyres. Prices from, BYN.',
         p_coord='Price list <b>/</b> all makes <b>/</b> prices from, BYN', p_l1='Prices', p_l2='labour',
@@ -320,9 +320,8 @@ def head(lang, up, title, desc, path, alt_path):
 <meta property="og:image" content="{BASE}assets/img/hero.webp">
 <link rel="icon" type="image/png" href="{up}favicon.png">
 <link rel="apple-touch-icon" href="{up}apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700;800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="{up}assets/fonts/unb-lat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{up}assets/fonts/onest-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="alternate" hreflang="{other}" href="{BASE}{alt_path}">
 <link rel="stylesheet" href="{up}assets/css/style.css">
 <link rel="stylesheet" href="{up}assets/css/motion.css">
@@ -340,7 +339,7 @@ def header(lang, up, page):
     lang_href = t['lang_href'] if page == 'index' else t['p_lang_href']
     return f'''<header class="top" data-header>
   <div class="top__in">
-    <a class="brand" href="./" aria-label="{t['home']}"><img class="logo-on-dark" src="{up}assets/img/logo-light.webp" alt="Rosso Corsa" width="225" height="90"><img class="logo-on-light" src="{up}assets/img/logo-dark.webp" alt="" width="225" height="90"></a>
+    <a class="brand" href="./" aria-label="{t['home']}"><img class="logo-on-dark" src="{up}assets/img/logo-light.webp" alt="Rosso Corsa" width="240" height="96"><img class="logo-on-light" src="{up}assets/img/logo-dark.webp" alt="" width="240" height="96" loading="lazy"></a>
     <nav class="nav" aria-label="{t['sections']}">
 {nav}
     </nav>
@@ -438,7 +437,7 @@ def index(lang):
 
     <div class="bento bento--hero">
       <figure class="tile tile--photo tile--hero">
-        <img src="{up}assets/img/hero.webp" srcset="{up}assets/img/hero-720.webp 720w, {up}assets/img/hero.webp 1600w" sizes="(max-width: 1000px) 100vw, 50vw" alt="{t['hero_alt']}" width="1600" height="1066" fetchpriority="high">
+        <img src="{up}assets/img/hero.webp" srcset="{up}assets/img/hero-720.webp 720w, {up}assets/img/hero-1080.webp 1080w, {up}assets/img/hero.webp 1600w" sizes="(max-width: 1000px) 100vw, 50vw" alt="{t['hero_alt']}" width="1600" height="1066" fetchpriority="high">
         <figcaption class="mono">{t['hero_cap']}</figcaption>
       </figure>
 
