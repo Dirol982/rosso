@@ -91,7 +91,8 @@ N_WORKS = len({w for _, _, items in PRICE for w, _, _ in items})
 
 BRANDS = ['BMW', 'Audi', 'Mercedes-Benz', 'Volkswagen', 'Ford', 'Renault', 'Peugeot', 'Citroën', 'Opel', 'Škoda',
           'Volvo', 'Porsche', 'Land Rover', 'Chevrolet', 'Geely', 'Haval', 'Chery', 'Alfa Romeo', 'Tesla']
-BOOK_MAKES = ['BMW', 'Audi', 'Mercedes-Benz', 'Volkswagen', 'Ford', 'Renault', 'Peugeot', 'Citroën']
+# Адреса для заявки: значение уходит мастеру по-русски, подпись — на языке страницы
+BRANCHES = [('Лещинского, 10', 'Лещинского, 10', 'Leshchinskogo 10'), ('Матусевича, 35к1', 'Матусевича, 35к1', 'Matusevicha 35k1')]
 
 REVIEWS = [
     ('Maryna Kuleunich', 'Обслуживаю здесь уже 11 лет все авто — никаких нареканий, всегда быстро и качественно. Никогда не обижали мою старую красную «альфу» 😅',
@@ -165,7 +166,7 @@ T = {
         calc_hint='Цены одинаковы для всех марок', search='Поиск работы', search_ph='Колодки, ГРМ, масло, шиномонтаж…',
         sym='Что беспокоит?', cats='Раздел прайса', count='Работ в прайсе',
         check='Заказ-наряд', clear='Очистить', close='Свернуть расчёт', total='Итого',
-        fine='От минимальной цены, без запчастей. Согласуем до начала работ.', model='Модель, год, двигатель', model_ph='Ford Focus 2015, 1.6',
+        fine='От минимальной цены, без запчастей. Согласуем до начала работ.', model='Автомобиль', model_ph='Марка и модель: BMW X5, Логан, Октавия…', branch='Куда приедете',
         when='Когда удобно', where='Куда отправить', submit='Записаться с этим расчётом', copy='Скопировать',
         visit_l='03 / Порядок', visit_h='Визит', visit_alt='Замена масла в двигателе в Rosso Corsa',
         steps=[('Предложение', 'Расскажите, что нужно автомобилю. Подготовим честную смету.'),
@@ -190,7 +191,7 @@ T = {
         ws_l='05 / Работы', ws_h='Работы', ws_prev='Предыдущие фото', ws_next='Следующие фото', ws_region='Фото работ: листайте пальцем, мышью или стрелками',
         rv_l='06 / Отзывы', rv_h='Отзывы', rv_prev='Предыдущие отзывы', rv_next='Следующие отзывы', rv_aria='Отзывы клиентов',
         rv_src='Отзыв в Google', rv_more_l='Google Карты', rv_more='Все отзывы',
-        bk_head='В мессенджер · готовый текст заявки', bk_make='Марка', bk_other='Другая марка',
+        bk_head='В мессенджер · готовый текст заявки', 
         bk_task='Что нужно сделать', bk_task_ph='ТО, стук в подвеске, колодки…', bk_where='Куда', bk_send='Отправить ↗',
         bk_status='Заявка откроется в мессенджере с готовым текстом.', bk_call='Или позвоните',
         bk_tasks=['Техническое обслуживание', 'Компьютерная диагностика', 'Ремонт двигателя', 'Ремонт подвески', 'Ремонт тормозной системы', 'Ремонт выхлопной системы', 'Ремонт автоэлектрики', 'Шиномонтаж'],
@@ -242,7 +243,7 @@ T = {
         calc_hint='Same prices for every make', search='Search jobs', search_ph='Pads, timing belt, oil, tyres…',
         sym='What’s wrong?', cats='Price list section', count='Jobs in the list',
         check='Work order', clear='Clear', close='Close estimate', total='Total',
-        fine='From the minimum price, parts not included. Agreed before work starts.', model='Model, year, engine', model_ph='Ford Focus 2015, 1.6',
+        fine='From the minimum price, parts not included. Agreed before work starts.', model='Car', model_ph='Make and model: BMW X5, Logan, Octavia…', branch='Location',
         when='Preferred day', where='Send to', submit='Book with this estimate', copy='Copy',
         visit_l='03 / How it works', visit_h='Visit', visit_alt='Engine oil change at Rosso Corsa',
         steps=[('Quote', 'Tell us what your car needs. We prepare an honest estimate.'),
@@ -267,7 +268,7 @@ T = {
         ws_l='05 / Work', ws_h='Work', ws_prev='Previous photos', ws_next='Next photos', ws_region='Work photos: swipe, drag or use the arrow keys',
         rv_l='06 / Reviews', rv_h='Reviews', rv_prev='Previous reviews', rv_next='Next reviews', rv_aria='Customer reviews',
         rv_src='Google review', rv_more_l='Google Maps', rv_more='All reviews',
-        bk_head='To your messenger · request text ready', bk_make='Make', bk_other='Other make',
+        bk_head='To your messenger · request text ready', 
         bk_task='What needs doing', bk_task_ph='Service, suspension knock, pads…', bk_where='Send to', bk_send='Send ↗',
         bk_status='Your request opens in the messenger, ready to send.', bk_call='Or call',
         bk_tasks=['Maintenance', 'Computer diagnostics', 'Engine repair', 'Suspension repair', 'Brake repair', 'Exhaust repair', 'Auto electrics', 'Tyre fitting'],
@@ -414,8 +415,7 @@ def index(lang):
     reviews = ''.join(
         f'<blockquote class="rv{" rv--accent" if i == 0 else ""}"><p>{e(ru if lang == "ru" else en)}</p><footer><b>{e(name)}</b><span>{t["rv_src"]}</span></footer></blockquote>'
         for i, (name, ru, en) in enumerate(REVIEWS))
-    makes = ''.join(f'<label><input type="radio" name="make" value="{e(m)}"><span>{e(m)}</span></label>' for m in BOOK_MAKES)
-    makes += f'<label><input type="radio" name="make" value="{t["bk_other"]}"><span>{t["bk_other"]}</span></label>'
+    branches = ''.join(f'<label><input type="radio" name="branch" value="{v}"{" checked" if i == 0 else ""}><span>{ru if lang == "ru" else en}</span></label>' for i, (v, ru, en) in enumerate(BRANCHES))
     tasks = ''.join(f'<option value="{e(x)}">' for x in t['bk_tasks'])
     ct = t['ct']
     msg = f'<a href="https://t.me/%2B375295072150" target="_blank" rel="noopener">Telegram</a> · <a href="viber://chat?number=%2B375295072150">Viber</a> · <a href="https://wa.me/375295072150" target="_blank" rel="noopener">WhatsApp</a>'
@@ -516,6 +516,8 @@ def index(lang):
         <div class="check__book" data-check-book hidden>
           <label class="check__label" for="check-model">{t['model']}</label>
           <input id="check-model" class="check__input" name="model" type="text" placeholder="{t['model_ph']}" autocomplete="off">
+          <span class="check__label">{t['branch']}</span>
+          <div class="check__ch check__ch--2" role="radiogroup" aria-label="{t['branch']}">{branches}</div>
           <span class="check__label">{t['when']}</span>
           <div class="check__days" data-check-days></div>
           <div class="check__slots" data-check-slots></div>
@@ -640,13 +642,13 @@ def index(lang):
     <h2 class="book__word" id="book-title">{t['book']}</h2>
     <form class="booking" data-booking novalidate aria-labelledby="book-title" style="margin-top:clamp(18px,3vw,32px)">
       <fieldset>
-        <legend class="label">{t['bk_make']}</legend>
-        <div class="makes-seg" role="radiogroup">
-          {makes}
+        <legend class="label">{t['branch']}</legend>
+        <div class="makes-seg makes-seg--2" role="radiogroup">
+          {branches}
         </div>
       </fieldset>
       <div class="booking__row">
-        <div class="fld"><label class="label" for="b-model">{t['model']}</label><input id="b-model" name="model" type="text" autocomplete="off" placeholder="{t['model_ph']}"></div>
+        <div class="fld fld--car"><label class="label" for="b-model">{t['model']}</label><input id="b-model" name="model" type="text" autocomplete="off" placeholder="{t['model_ph']}"></div>
         <div class="fld"><label class="label" for="b-task">{t['bk_task']}</label><input id="b-task" name="task" type="text" list="b-tasks" autocomplete="off" placeholder="{t['bk_task_ph']}">
           <datalist id="b-tasks">{tasks}</datalist></div>
         <fieldset class="seg"><legend class="label">{t['bk_where']}</legend>

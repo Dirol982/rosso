@@ -149,8 +149,10 @@
         <div class="check__total"><span>Итого</span><strong class="num"><span data-check-sum>0</span> <small>BYN</small></strong></div>
         <p class="check__fine">От минимальной цены, без запчастей. Согласуем до начала работ.</p>
         <div class="check__book" data-check-book hidden>
-          <label class="check__label" for="check-model">Модель, год, двигатель</label>
-          <input id="check-model" class="check__input" name="model" type="text" placeholder="Ford Focus 2015, 1.6" autocomplete="off">
+          <label class="check__label" for="check-model">Автомобиль</label>
+          <input id="check-model" class="check__input" name="model" type="text" placeholder="Марка и модель: BMW X5, Логан, Октавия…" autocomplete="off">
+          <span class="check__label">Куда приедете</span>
+          <div class="check__ch check__ch--2" role="radiogroup" aria-label="Куда приедете"><label><input type="radio" name="branch" value="Лещинского, 10" checked><span>Лещинского, 10</span></label><label><input type="radio" name="branch" value="Матусевича, 35к1"><span>Матусевича, 35к1</span></label></div>
           <span class="check__label">Когда удобно</span>
           <div class="check__days" data-check-days></div>
           <div class="check__slots" data-check-slots></div>
@@ -311,13 +313,13 @@
     <h2 class="book__word" id="book-title">Записаться</h2>
     <form class="booking" data-booking novalidate aria-labelledby="book-title" style="margin-top:clamp(18px,3vw,32px)">
       <fieldset>
-        <legend class="label">Марка</legend>
-        <div class="makes-seg" role="radiogroup">
-          <label><input type="radio" name="make" value="BMW"><span>BMW</span></label><label><input type="radio" name="make" value="Audi"><span>Audi</span></label><label><input type="radio" name="make" value="Mercedes-Benz"><span>Mercedes-Benz</span></label><label><input type="radio" name="make" value="Volkswagen"><span>Volkswagen</span></label><label><input type="radio" name="make" value="Ford"><span>Ford</span></label><label><input type="radio" name="make" value="Renault"><span>Renault</span></label><label><input type="radio" name="make" value="Peugeot"><span>Peugeot</span></label><label><input type="radio" name="make" value="Citroën"><span>Citroën</span></label><label><input type="radio" name="make" value="Другая марка"><span>Другая марка</span></label>
+        <legend class="label">Куда приедете</legend>
+        <div class="makes-seg makes-seg--2" role="radiogroup">
+          <label><input type="radio" name="branch" value="Лещинского, 10" checked><span>Лещинского, 10</span></label><label><input type="radio" name="branch" value="Матусевича, 35к1"><span>Матусевича, 35к1</span></label>
         </div>
       </fieldset>
       <div class="booking__row">
-        <div class="fld"><label class="label" for="b-model">Модель, год, двигатель</label><input id="b-model" name="model" type="text" autocomplete="off" placeholder="Ford Focus 2015, 1.6"></div>
+        <div class="fld fld--car"><label class="label" for="b-model">Автомобиль</label><input id="b-model" name="model" type="text" autocomplete="off" placeholder="Марка и модель: BMW X5, Логан, Октавия…"></div>
         <div class="fld"><label class="label" for="b-task">Что нужно сделать</label><input id="b-task" name="task" type="text" list="b-tasks" autocomplete="off" placeholder="ТО, стук в подвеске, колодки…">
           <datalist id="b-tasks"><option value="Техническое обслуживание"><option value="Компьютерная диагностика"><option value="Ремонт двигателя"><option value="Ремонт подвески"><option value="Ремонт тормозной системы"><option value="Ремонт выхлопной системы"><option value="Ремонт автоэлектрики"><option value="Шиномонтаж"></datalist></div>
         <fieldset class="seg"><legend class="label">Куда</legend>
