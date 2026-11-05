@@ -292,8 +292,8 @@
         });
         return;
       }
-      // only a generation code typed ("e70", "w211")
-      if (!makeHit) m.gens.forEach(function (g, gi) { if (g.label && g.label.length > 2 && hit(m.genKeys[gi], ws.join(' ')) === 3) out.push({ m: m, g: g, score: 2 }); });
+      // only a generation code typed, with or without the make ("e70", "мерседес w211")
+      m.gens.forEach(function (g, gi) { if (g.label && g.label.length > 2 && hit(m.genKeys[gi], ws.join(' ')) === 3) out.push({ m: m, g: g, score: score + 2 }); });
     });
     out.sort(function (a, b) { return b.score - a.score || a.m.make.localeCompare(b.m.make) || a.m.name.localeCompare(b.m.name, 'en', { numeric: true }); });
     return out.slice(0, 40);
